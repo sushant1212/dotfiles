@@ -1,0 +1,60 @@
+* {
+    base:    #161616;
+    surface: #282828;
+    overlay: #484848;
+    text:    #f2f4f8;
+    pink:    #ee5396;
+    green:   #25be6a;
+    cyan:    #08bdba;
+    blue:    #78a9ff;
+    magenta: #be95ff;
+
+    background-color: @base;
+    text-color:        @text;
+}
+
+window {
+    background-color: @base;
+    border:           2px;
+    border-color:     @blue;
+    border-radius:    8px;
+    width:            25%;
+}
+
+mainbox {
+    background-color: @base;
+    padding: 10px;
+    spacing: 12px;
+}
+
+inputbar {
+    background-color: @surface;
+    text-color:        @text;
+    padding:           8px;
+    border-radius:     6px;
+}
+
+listview {
+    background-color: @base;
+    spacing:            4px;
+}
+
+element {
+    background-color: @base;
+    text-color:         @text;
+    padding:            6px;
+    border-radius:      6px;
+}
+
+element selected {
+    background-color: @overlay;
+    text-color:         @green;
+}
+
+element-icon {
+    size: 24px;
+}
+
+mode-switcher {
+    enabled: false;
+}

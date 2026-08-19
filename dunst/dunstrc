@@ -1,0 +1,163 @@
+[global]
+    # Which monitor to show notifications on (0 = primary/first monitor)
+    monitor = 0
+
+    # "mouse" = notifications appear on whichever monitor your mouse is
+    # currently on. Useful if you ever go multi-monitor later.
+    follow = mouse
+
+    # Fixed width of the notification popup, in pixels
+    width = 300
+    # Height of the popup — dunst will still shrink/grow slightly based
+    # on text length even with this set
+    height = 100
+
+    # Which screen corner notifications spawn from
+    origin = top-right
+    # Offset from that corner (x-offset x y-offset) — pushes it down/right
+    # so it doesn't sit flush against your polybar bar at the very top
+    offset = 12x40
+
+    # DPI scaling factor for the notification window — 0 means "auto-detect
+    # from the display," leave this alone unless you have scaling issues
+    scale = 0
+
+    # Max number of notifications stacked/visible on screen at once before
+    # older ones get pushed off (they're not lost, still in history)
+    notification_limit = 5
+
+    # Whether notifications can show a progress bar (used by things like
+    # volume/brightness OSD-style notifications, or download progress)
+    progress_bar = true
+    progress_bar_height = 10
+    progress_bar_frame_width = 1
+    progress_bar_min_width = 150
+    progress_bar_max_width = 300
+
+    # If a notification is hidden because notification_limit was hit,
+    # show a small "+N more" style indicator rather than silently dropping it
+    indicate_hidden = yes
+
+    # Background transparency, 0 = fully opaque, 100 = fully see-through.
+    # This requires picom running (which you already have) — without a
+    # compositor, this setting has no effect and stays fully opaque
+    transparency = 5
+
+    # Thickness of the divider line drawn between stacked notifications
+    separator_height = 2
+    # Inner padding — space between the notification's border and its text
+    padding = 12
+    horizontal_padding = 12
+    # Extra padding specifically between an icon and the text next to it
+    text_icon_padding = 0
+
+    # Border thickness around the whole notification box
+    frame_width = 2
+    # Border color — currently set to your Oxocarbon purple accent
+    frame_color = "#78a9ff"
+    # Color of the separator line between stacked notifications —
+    # "frame" means "reuse whatever frame_color is," rather than a
+    # separate hardcoded color
+    separator_color = frame
+
+    # Sort notifications by urgency (critical ones bubble up/stay visible
+    # over low-priority ones) rather than strictly by arrival order
+    sort = yes
+    # How long (seconds) dunst waits with no new notifications before it
+    # considers itself "idle" — mostly relevant for scripting/DBus checks,
+    # not something you'll notice day-to-day
+    idle_threshold = 120
+
+    # Font + size for notification text — matches your Nerd Font choice
+    # elsewhere so icons in notification text (if any app sends them)
+    # render consistently
+    font = JetBrainsMono Nerd Font 10
+    # Extra spacing between lines of text — 0 uses the font's natural
+    # line height
+    line_height = 0
+    # Allow basic HTML-like markup (bold, italics, links) inside notification
+    # text if the sending app includes it — "full" enables all supported tags
+    markup = full
+
+    # The actual text layout template: %s = summary (title), %b = body text.
+    # This wraps summary in bold, puts body on the next line.
+    format = "<b>%s</b>\n%b"
+
+    # Text alignment inside the notification box
+    alignment = left
+    # Vertical alignment of text relative to an icon, if one is shown
+    vertical_alignment = center
+    # If a notification has been visible longer than this many seconds,
+    # dunst starts showing "X minutes ago" next to it
+    show_age_threshold = 60
+    # If text is too long to fit, truncate with "..." in the middle
+    # rather than cutting off the end abruptly
+    ellipsize = middle
+    # Whether literal newline characters in a notification's body are
+    # respected (yes) or collapsed into one line (no)
+    ignore_newline = no
+    # If the same notification fires repeatedly (e.g. spammy app), stack
+    # them into one entry with a counter instead of showing duplicates
+    stack_duplicates = true
+    # Whether to actually show that duplicate counter badge, or hide it
+    # even while still stacking under the hood
+    hide_duplicate_count = false
+    # Show small indicator icons for things like "this notification has
+    # actionable buttons" or "this is part of a group"
+    show_indicators = yes
+
+    # Where the app's icon (if it sends one) appears relative to the text
+    icon_position = left
+    # Minimum/maximum icon size in pixels — icons get scaled to fit this range
+    min_icon_size = 32
+    max_icon_size = 64
+
+    # Whether dismissed notifications remain browsable in dunst's history
+    # (recalled via a keybind, e.g. dunstctl history-pop)
+    sticky_history = yes
+    # How many old notifications to retain in that history
+    history_length = 20
+
+    # Allow a notification to trigger a script defined via the app (some
+    # apps attach scripts to run when a notification is shown/clicked)
+    always_run_script = true
+    # Window title/class dunst identifies itself as — mostly relevant if
+    # you ever want to target it with i3 rules (e.g. force floating)
+    title = Dunst
+    class = Dunst
+
+    # Rounds the corners of the notification box — matches the picom
+    # corner-radius aesthetic you set up earlier
+    corner_radius = 8
+
+    # Mouse click behavior on a notification popup
+    mouse_left_click = close_current
+    mouse_middle_click = do_action, close_current
+    mouse_right_click = close_all
+
+[experimental]
+    # Leave off unless you have HiDPI/mixed-DPI multi-monitor issues —
+    # enabling this changes how dunst calculates sizing per-monitor
+    per_monitor_dpi = false
+
+# Each urgency_* section overrides colors/timeout for that specific
+# notification priority level. Apps set their own urgency when sending
+# a notification (e.g. "battery critical" = critical, "volume changed" = low)
+[urgency_low]
+    background = "#161616"
+    foreground = "#f2f4f8"
+    frame_color = "#484848"
+    timeout = 5
+
+[urgency_normal]
+    background = "#161616"
+    foreground = "#f2f4f8"
+    frame_color = "#78a9ff"
+    timeout = 8
+
+[urgency_critical]
+    background = "#161616"
+    foreground = "#f2f4f8"
+    frame_color = "#ee5396"
+    timeout = 0
+
