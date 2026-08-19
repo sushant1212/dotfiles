@@ -256,6 +256,10 @@ bindsym $mod+m exec i3-input -F 'mark %s' -l 1 -P 'Mark: '
 # read 1 character and go to the window with the character
 bindsym $mod+apostrophe exec i3-input -F '[con_mark="%s"] focus' -l 1 -P 'Goto: '
 
+# shuffling through in tabbed / stacking view
+bindsym $mod+n focus next
+bindsym $mod+p focus prev
+
 # Back and forth between workspaces: so good!
 bindsym $mod+grave workspace back_and_forth
 
